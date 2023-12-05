@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-// 使用你的路由
+// 使用路由
 app.use('/api/user', authRoute);
 
 const PORT = process.env.PORT || 5000;

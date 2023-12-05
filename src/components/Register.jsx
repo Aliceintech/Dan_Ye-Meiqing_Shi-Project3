@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   // 添加状态来存储可能出现的错误消息
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // 阻止表单的默认提交行为
 
-    // 检查用户名和密码是否符合要求
+    // check validity
     if (!username) {
       setError('Username is required');
       return;
@@ -19,17 +22,15 @@ function Register() {
       return;
     }
 
-    // 清除错误消息
+    // clear error
     setError('');
 
-    // 构建请求体
     const requestBody = {
       username: username,
       password: password,
     };
 
     try {
-      // 发送注册请求到后端API
       const response = await fetch('http://localhost:5000/api/user/register', {
         method: 'POST',
         headers: {
@@ -38,22 +39,17 @@ function Register() {
         body: JSON.stringify(requestBody),
       });
 
-      const data = await response.json(); // 解析JSON响应
+      const data = await response.json();
 
       if (response.ok) {
-        // 注册成功处理逻辑
         console.log('Registration successful:', data);
-        // 可以在这里进行如页面跳转等后续操作
+        navigate('/');
       } else {
-        // 注册失败处理逻辑
         console.error('Registration failed:', data.message);
-        // 更新错误状态
         setError(data.message);
       }
     } catch (error) {
-      // 网络或其他错误处理逻辑
       console.error('There was an error registering the user:', error);
-      // 更新错误状态
       setError('There was an error registering the user');
     }
   };
@@ -62,7 +58,7 @@ function Register() {
   return (
     <div>
       <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* 显示错误消息 */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username</label>
