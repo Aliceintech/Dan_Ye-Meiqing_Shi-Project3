@@ -26,7 +26,19 @@ router.delete('/:statusId', async (req, res) => {
         res.status(500).send({ message: error.message });
     }
 });
-  
+
+// update
+router.put('/:statusId', async (req, res) => {
+    try {
+        const statusId = req.params.statusId;
+        const updatedContent = req.body.content;
+        
+        const updatedStatus = await Status.findByIdAndUpdate(statusId, { content: updatedContent }, { new: true });
+        res.status(200).json(updatedStatus);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // 获取所有状态
 router.get('/', async (req, res) => {

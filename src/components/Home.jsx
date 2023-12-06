@@ -1,6 +1,6 @@
 // Home.jsx
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useStatus } from '../context/StatusContext';
 import CreateStatus from './CreateStatus';
@@ -9,7 +9,11 @@ import CreateStatus from './CreateStatus';
 function Home() {
 
   const { currentUser } = useAuth();
-  const { statuses, fetchStatuses } = useStatus(); // 使用 StatusContext 的 fetchStatuses
+  const { statuses, fetchStatuses } = useStatus();
+
+  const [editingStatus, setEditingStatus] = useState(null); // 当前正在编辑的状态
+  const [editContent, setEditContent] = useState(''); // 编辑中的内容
+
 
 
   useEffect(() => {
@@ -34,6 +38,33 @@ function Home() {
       }
     }
   };
+
+  const handleEdit = (status) => {
+    setEditingStatus(status);
+    setEditContent(status.content);
+  };
+
+  const submitEdit = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/status/${editingStatus._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: editContent })
+      });
+
+      if (response.ok) {
+        setEditingStatus(null); // 关闭编辑表单
+        fetchStatuses(); // 重新获取状态以更新列表
+      } else {
+        console.error('Failed to update status');
+      }
+    } catch (error) {
+      console.error('Error updating status:', error);
+    }
+  };
+
 
   return (
     <div>
@@ -64,6 +95,15 @@ function Home() {
           </div>
         ))
       }
+
+      {editingStatus && (
+        <div>
+          <textarea value={editContent} onChange={(e) => setEditContent(e.target.value)} />
+          <button onClick={submitEdit}>Submit Changes</button>
+          <button onClick={() => setEditingStatus(null)}>Cancel</button>
+        </div>
+      )}
+
 
     </div>
   );
