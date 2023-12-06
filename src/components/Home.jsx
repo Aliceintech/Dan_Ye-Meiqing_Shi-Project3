@@ -1,37 +1,24 @@
 // Home.jsx
 
-import React, { useEffect, useState } from 'react'; // 引入 useEffect
+import React, { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useStatus } from '../context/StatusContext';
 import CreateStatus from './CreateStatus';
 
 
 function Home() {
 
+  const { currentUser } = useAuth();
+  const { statuses, fetchStatuses } = useStatus(); // 使用 StatusContext 的 fetchStatuses
 
-  const [statuses, setStatuses] = useState([]);
-  const { currentUser } = useAuth(); // 使用 AuthContext 获取当前用户
 
   useEffect(() => {
-    // 获取并显示状态更新的逻辑（不变）
-    const fetchStatuses = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/status');
-        if (response.ok) {
-          const data = await response.json();
-          setStatuses(data);
-        }
-      } catch (error) {
-        console.error('Error fetching statuses:', error);
-      }
-    };
-
-    fetchStatuses();
-  }, []);
+    fetchStatuses();}, [fetchStatuses]);
 
   return (
     <div>
       <h1>Home Page</h1>
-      {currentUser && <CreateStatus />} // 仅当用户登录时显示 CreateStatus 组件
+      {currentUser && <CreateStatus />}
       <h2>Status Updates</h2>
       {statuses.map(status => (
         <div key={status._id}>
