@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth'); // 确保路径正确
+const statusRoute = require('./routes/status'); // 确保路径正确，这是新添加的路由
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // 使用路由
 app.use('/api/user', authRoute);
+app.use('/api/status', statusRoute); // 注册状态路由
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

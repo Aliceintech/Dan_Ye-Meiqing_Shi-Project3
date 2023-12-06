@@ -1,8 +1,10 @@
 // server/routes/auth.js
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const router = express.Router();
+
 
 
 // 注册路由
