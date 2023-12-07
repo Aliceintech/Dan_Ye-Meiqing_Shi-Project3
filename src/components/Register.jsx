@@ -2,19 +2,19 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // 添加状态来存储可能出现的错误消息
+  const [description, setDescription] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  const { login } = useAuth(); // 从 AuthContext 获取 login 方法
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // 阻止表单的默认提交行为
-
-    // check validity
+    event.preventDefault();
     if (!username) {
       setError('Username is required');
       return;
@@ -23,13 +23,12 @@ function Register() {
       setError('Password must be at least 6 characters long');
       return;
     }
-
-    // clear error
     setError('');
 
     const requestBody = {
-      username: username,
-      password: password,
+      username,
+      password,
+      description
     };
 
     try {
@@ -41,12 +40,12 @@ function Register() {
         body: JSON.stringify(requestBody),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        console.log('Registration successful:', data);
-        navigate('/');
+        // 注册成功后，更新登录状态
+        login({ username });
+        navigate('/'); // 导航到主页
       } else {
+        const data = await response.json();
         console.error('Registration failed:', data.message);
         setError(data.message);
       }
@@ -56,7 +55,6 @@ function Register() {
     }
   };
 
-  // JSX代码用于渲染注册表单
   return (
     <div>
       <h2>Register</h2>
@@ -76,6 +74,13 @@ function Register() {
             type="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
+          />
+        </div>
+        <div>
+          <label>Description (optional)</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <button type="submit">Register</button>

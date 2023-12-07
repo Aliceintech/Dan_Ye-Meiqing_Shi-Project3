@@ -21,8 +21,23 @@ export const StatusProvider = ({ children }) => {
     }
   };
 
+  const fetchUserStatuses = async (username) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/status/user/${username}`);
+      if (response.ok) {
+        return await response.json();
+      } else {
+        console.error('Failed to fetch user statuses');
+        return [];
+      }
+    } catch (error) {
+      console.error('Error fetching user statuses:', error);
+      return [];
+    }
+  };
+
   return (
-    <StatusContext.Provider value={{ statuses, fetchStatuses }}>
+    <StatusContext.Provider value={{ statuses, fetchStatuses, fetchUserStatuses }}>
       {children}
     </StatusContext.Provider>
   );
