@@ -50,15 +50,4 @@ router.get('/', async (req, res) => {
     }
 });
 
-// // 获取特定用户状态
-// router.get('/user/:username', async (req, res) => {
-//     try {
-//         const username = req.params.username;
-//         const statuses = await Status.find({ username: username }).sort({ timestamp: -1 });
-//         res.json(statuses);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-//   });
-
 module.exports = router;

@@ -73,41 +73,6 @@ function Home() {
   };
 
 
-  // return (
-  //   <div>
-  //     <h1>Home Page</h1>
-  //     {currentUser && <CreateStatus />}
-  //     <h2>Status Updates</h2>
-  //     {
-  //       statuses.map(status => (
-  //         <div key={status._id}>
-  //           <p>{status.content}</p>
-  //           <small>Posted by {status.username} on {new Date(status.timestamp).toLocaleString()}</small>
-  //           {currentUser && currentUser.username === status.username && (
-
-  //             <>
-  //               <button onClick={() => handleDelete(status._id)}>Delete</button>
-  //               <button onClick={() => handleEdit(status)}>Edit</button>
-  //             </>
-              
-  //           )}
-  //         </div>
-  //       ))
-  //     }
-
-  //     {editingStatus && (
-  //       <div>
-  //         <textarea value={editContent} onChange={(e) => setEditContent(e.target.value)} />
-  //         <button onClick={submitEdit}>Submit Changes</button>
-  //         <button onClick={() => setEditingStatus(null)}>Cancel</button>
-  //       </div>
-  //     )}
-
-
-  //   </div>
-  // );
-
-
   return (
     <div>
       <h1>Home Page</h1>

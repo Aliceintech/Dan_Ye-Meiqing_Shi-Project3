@@ -105,5 +105,28 @@ router.get('/user/:username', async (req, res) => {
   }
 });
 
+// 修改description路由
+router.put('/updateDescription', async (req, res) => {
+  try {
+    const { username, description } = req.body;
+    // 这里应该有身份验证逻辑，以确保用户有权更新描述
+
+    const updatedUser = await User.findOneAndUpdate(
+      { username },
+      { description },
+      { new: true }
+    ).select('-password');
+
+    if (updatedUser) {
+      res.json({ message: 'Description updated successfully', user: updatedUser });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error updating user description:', error);
+    res.status(500).json({ message: 'Error updating user description' });
+  }
+});
+
 
 module.exports = router;
