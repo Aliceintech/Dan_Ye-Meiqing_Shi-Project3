@@ -14,13 +14,18 @@ export const AuthProvider = ({ children }) => {
 
   // 检查用户登录状态
   const checkLoginStatus = async () => {
+    console.log("start checking");
     try {
       const response = await fetch('http://localhost:5000/api/user/checkLogin', {
         credentials: 'include', // 确保 cookie 被发送
       });
+      console.log("I am trying");
+
       if (response.ok) {
         const data = await response.json();
         setCurrentUser(data.user);
+      } else {
+        console.log("Cannot fetch")
       }
     } catch (error) {
       console.error('Error checking login status:', error);

@@ -1,4 +1,4 @@
-// Register.jsx
+// // Register.jsx
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ function Register() {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  const { login } = useAuth(); // 从 AuthContext 获取 login 方法
+  const { login } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,16 +41,16 @@ function Register() {
       });
 
       if (response.ok) {
-        // 注册成功后，更新登录状态
         login({ username });
-        navigate('/'); // 导航到主页
+        navigate('/');
+      } else if (response.status === 409) {
+        const data = await response.json();
+        setError(data.message);
       } else {
         const data = await response.json();
-        console.error('Registration failed:', data.message);
         setError(data.message);
       }
     } catch (error) {
-      console.error('There was an error registering the user:', error);
       setError('There was an error registering the user');
     }
   };

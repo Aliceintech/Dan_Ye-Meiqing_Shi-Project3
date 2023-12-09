@@ -1,9 +1,5 @@
 // UserDetails.jsx
 
-
-
-// UserDetails.jsx
-
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // 引入 useAuth 钩子
@@ -105,64 +101,3 @@ function UserDetails() {
 }
 
 export default UserDetails;
-
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-
-// function UserDetails() {
-//   const { username } = useParams();
-//   const [userDetails, setUserDetails] = useState(null);
-//   const [userStatuses, setUserStatuses] = useState([]);
-
-//   const [isEditingDescription, setIsEditingDescription] = useState(false);
-//   const [newDescription, setNewDescription] = useState('');
-
-
-//   useEffect(() => {
-//     // 合并了获取用户详细信息和状态的调用
-//     const fetchDetailsAndStatuses = async () => {
-//       try {
-//         const response = await fetch(`http://localhost:5000/api/user/user/${username}`);
-//         if (response.ok) {
-//           const data = await response.json();
-//           setUserDetails(data.userDetails);
-//           setUserStatuses(data.statuses);
-//         } else {
-//           console.error('Failed to fetch user details and statuses');
-//         }
-//       } catch (error) {
-//         console.error('Error fetching user details and statuses:', error);
-//       }
-//     };
-
-//     fetchDetailsAndStatuses();
-//   }, [username]);
-  
-
-//   return (
-//     <div>
-//       {userDetails ? (
-//         <>
-//           <h1 style={{ fontSize: '2em' }}>{userDetails.username}</h1>
-//           <p>Joined: {new Date(userDetails.joinedDate).toLocaleString()}</p>
-//           <p>{userDetails.description}</p>
-//         </>
-//       ) : (
-//         <p>Loading user details...</p>
-//       )}
-//       <h2>Status Updates</h2>
-//       {userStatuses.length > 0 ? (
-//         userStatuses.map(status => (
-//           <div key={status._id}>
-//             <p>{status.content}</p>
-//             <small>Posted on: {new Date(status.timestamp).toLocaleString()}</small>
-//           </div>
-//         ))
-//       ) : (
-//         <p>No status updates to show.</p>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default UserDetails;

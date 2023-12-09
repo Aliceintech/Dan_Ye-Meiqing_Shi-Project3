@@ -11,6 +11,12 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
   console.log('Received register request:', req.body);
   try {
+    // Check if the username is already in use
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingUser) {
+      return res.status(409).json({ message: 'Username is already taken' });
+        }
+    
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = new User({
       username: req.body.username,
@@ -21,7 +27,7 @@ router.post('/register', async (req, res) => {
     savedUser.password = undefined;
 
     console.log('User registered successfully:', savedUser.username);
-    res.cookie('userId', savedUser._id.toString(), { httpOnly: true, maxAge: 3600000 });
+    res.cookie('userId', savedUser._id.toString());
     console.log('Cookie set for user:', savedUser._id);
     res.status(201).json({ message: 'Registration successful and logged in' });
   } catch (error) {
@@ -31,6 +37,30 @@ router.post('/register', async (req, res) => {
 });
 
 // 登录路由
+// router.post('/login', async (req, res) => {
+//   console.log('Login attempt for user:', req.body.username);
+//   try {
+//     const { username, password } = req.body;
+//     const user = await User.findOne({ username });
+//     if (user) {
+//       const isValid = await bcrypt.compare(password, user.password);
+//       if (isValid) {
+//         res.cookie('userId', user._id.toString());
+//         console.log('Cookie set for user:', user._id);
+//         res.status(200).json({ message: 'Login successful', user: { username: user.username } });
+//       } else {
+//         console.log('Invalid password for user:', username);
+//         res.status(400).json({ message: 'Invalid password' });
+//       }
+//     } else {
+//       console.log('User not found:', username);
+//       res.status(404).json({ message: 'User not found' });
+//     }
+//   } catch (error) {
+//     console.error('Error logging in:', error);
+//     res.status(500).json({ message: 'Error logging in' });
+//   }
+// });
 router.post('/login', async (req, res) => {
   console.log('Login attempt for user:', req.body.username);
   try {
@@ -39,15 +69,13 @@ router.post('/login', async (req, res) => {
     if (user) {
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
-        res.cookie('userId', user._id.toString(), { httpOnly: true, maxAge: 3600000 });
+        res.cookie('userId', user._id.toString());
         console.log('Cookie set for user:', user._id);
         res.status(200).json({ message: 'Login successful', user: { username: user.username } });
       } else {
-        console.log('Invalid password for user:', username);
         res.status(400).json({ message: 'Invalid password' });
       }
     } else {
-      console.log('User not found:', username);
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
@@ -56,7 +84,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+
 // 检查登录状态的路由
+// router.get('/checkLogin', async (req, res) => {
+//   console.log('Checking login status. Cookie received:', req.cookies.userId);
+
+
+//   // 直接返回硬编码的用户信息，不进行任何异常处理
+//   res.json({
+//     user: {
+//       username: '0',  // 这里我们硬编码用户名为 '0'
+//     }
+//   });
+// });
+
 router.get('/checkLogin', async (req, res) => {
   console.log('Checking login status. Cookie received:', req.cookies.userId);
   try {

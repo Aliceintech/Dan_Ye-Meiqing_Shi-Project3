@@ -12,8 +12,8 @@ const app = express();
 
 // CORS 配置
 const corsOptions = {
-  origin: 'http://localhost:5173', // 您的前端地址
-  credentials: true, // 允许发送凭证
+  origin: 'http://localhost:5173',
+  credentials: true,
 };
 
 app.use(cors(corsOptions)); // 使用自定义的 CORS 配置
