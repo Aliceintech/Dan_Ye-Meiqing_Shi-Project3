@@ -37,30 +37,6 @@ router.post('/register', async (req, res) => {
 });
 
 // 登录路由
-// router.post('/login', async (req, res) => {
-//   console.log('Login attempt for user:', req.body.username);
-//   try {
-//     const { username, password } = req.body;
-//     const user = await User.findOne({ username });
-//     if (user) {
-//       const isValid = await bcrypt.compare(password, user.password);
-//       if (isValid) {
-//         res.cookie('userId', user._id.toString());
-//         console.log('Cookie set for user:', user._id);
-//         res.status(200).json({ message: 'Login successful', user: { username: user.username } });
-//       } else {
-//         console.log('Invalid password for user:', username);
-//         res.status(400).json({ message: 'Invalid password' });
-//       }
-//     } else {
-//       console.log('User not found:', username);
-//       res.status(404).json({ message: 'User not found' });
-//     }
-//   } catch (error) {
-//     console.error('Error logging in:', error);
-//     res.status(500).json({ message: 'Error logging in' });
-//   }
-// });
 router.post('/login', async (req, res) => {
   console.log('Login attempt for user:', req.body.username);
   try {
@@ -169,6 +145,39 @@ router.put('/updateDescription', async (req, res) => {
     res.status(500).json({ message: 'Error updating user description' });
   }
 });
+
+// 搜索用户的路由
+// router.get('/search-users', async (req, res) => {
+//   const searchQuery = req.query.query;
+//   try {
+//     const regex = new RegExp(searchQuery, 'i'); // 创建不区分大小写的正则表达式
+//     const users = await User.find({ username: { $regex: regex } }).select('username'); // 只选择用户名字段
+//     res.json(users);
+//   } catch (error) {
+//     console.error('Error during user search:', error);
+//     res.status(500).json({ message: 'Error during user search' });
+//   }
+// });
+
+// 搜索用户的路由
+router.get('/search-users', async (req, res) => {
+  const searchQuery = req.query.query;
+  console.log('Received search request for:', searchQuery); // 打印收到的搜索请求
+
+  try {
+    const regex = new RegExp(searchQuery, 'i'); // 创建不区分大小写的正则表达式
+    const users = await User.find({ username: { $regex: regex } }).select('username');
+    
+    console.log('Matching usernames:', users.map(user => user.username)); // 打印匹配到的用户名
+
+    res.json(users);
+    console.log('Response sent:', users); // 打印发送的响应
+  } catch (error) {
+    console.error('Error during user search:', error);
+    res.status(500).json({ message: 'Error during user search' });
+  }
+});
+
 
 
 module.exports = router;

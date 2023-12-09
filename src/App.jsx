@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import UserDetails from './components/UserDetails';
 import Navbar from './components/Navbar';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user/:username" element={<UserDetails />} />
+            <Route path="/search" element={<SearchResults />} />
           </Routes>
         </Router>
       </StatusProvider>
