@@ -28,9 +28,10 @@
     "url": "https://github.com/ajorgense1-chwy/Dan_Ye-Meiqing_Shi-Project3/issues"
   },
   "homepage": "https://github.com/ajorgense1-chwy/Dan_Ye-Meiqing_Shi-Project3#readme",
-  "dependencies": {
-  },
   "devDependencies": {
     "concurrently": "^8.0.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
   }
 }
