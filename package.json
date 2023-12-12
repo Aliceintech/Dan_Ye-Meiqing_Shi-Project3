@@ -7,7 +7,12 @@
     "server",
     "frontend"
   ],
+  "engines": {
+    "node": "21.x"
+  },
   "scripts": {
+    "start": "npm run start -w server",
+    "heroku-postbuild": "npm run build -w frontend",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w frontend\"",
     "build": "npm run build -ws --if-present",
