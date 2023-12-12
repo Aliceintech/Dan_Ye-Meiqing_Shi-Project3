@@ -1,17 +1,20 @@
 // StatusContext.jsx
 
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useContext, useState } from 'react';
 
 const StatusContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useStatus = () => useContext(StatusContext);
 
+// eslint-disable-next-line react/prop-types
 export const StatusProvider = ({ children }) => {
   const [statuses, setStatuses] = useState([]);
 
   const fetchStatuses = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/status');
+      const response = await fetch('http://localhost:3000/api/status');
       if (response.ok) {
         const data = await response.json();
         setStatuses(data);
@@ -23,7 +26,7 @@ export const StatusProvider = ({ children }) => {
 
   const fetchUserStatuses = async (username) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/status/user/${username}`);
+      const response = await fetch(`http://localhost:3000/api/status/user/${username}`);
       if (response.ok) {
         return await response.json();
       } else {

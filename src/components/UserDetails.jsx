@@ -1,5 +1,6 @@
 // UserDetails.jsx
 
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // 引入 useAuth 钩子
@@ -15,7 +16,7 @@ function UserDetails() {
   useEffect(() => {
     const fetchDetailsAndStatuses = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/user/user/${username}`);
+        const response = await fetch(`http://localhost:3000/api/user/user/${username}`);
         if (response.ok) {
           const data = await response.json();
           setUserDetails(data.userDetails);
@@ -42,7 +43,7 @@ function UserDetails() {
 
   const handleDescriptionSave = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/user/updateDescription`, {
+      const response = await fetch(`http://localhost:3000/api/user/updateDescription`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

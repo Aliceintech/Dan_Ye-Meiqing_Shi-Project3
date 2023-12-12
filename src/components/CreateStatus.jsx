@@ -1,5 +1,6 @@
 // CreateStatus.jsx
 
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useStatus } from '../context/StatusContext';
@@ -18,7 +19,7 @@ function CreateStatus() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/status', {
+      const response = await fetch('http://localhost:3000/api/status', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

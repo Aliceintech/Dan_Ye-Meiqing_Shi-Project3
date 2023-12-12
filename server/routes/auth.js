@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
     if (user) {
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
-        res.cookie('userId', user._id.toString());
+        res.cookie('userId', user._id.toString(), { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } );
         console.log('Cookie set for user:', user._id);
         res.status(200).json({ message: 'Login successful', user: { username: user.username } });
       } else {

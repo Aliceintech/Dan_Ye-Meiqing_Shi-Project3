@@ -1,4 +1,5 @@
 // AuthContext.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext({
@@ -7,8 +8,10 @@ const AuthContext = createContext({
   logout: () => {},
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);
 
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -16,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   const checkLoginStatus = async () => {
     console.log("start checking");
     try {
-      const response = await fetch('http://localhost:5000/api/user/checkLogin', {
+      const response = await fetch('http://localhost:3000/api/user/checkLogin', {
         credentials: 'include', // 确保 cookie 被发送
       });
       console.log("I am trying");
