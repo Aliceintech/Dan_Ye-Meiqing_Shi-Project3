@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useStatus } from '../context/StatusContext';
 
 import CreateStatus from './CreateStatus';
-import './home.css';
+import './Home.css';
 
 
 function Home() {
