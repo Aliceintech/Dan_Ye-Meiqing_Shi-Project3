@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const path = require('path');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/auth');
@@ -28,6 +29,15 @@ mongoose.connect(process.env.MONGO_URI)
 // 使用路由
 app.use('/api/user', authRoute);
 app.use('/api/status', statusRoute);
+
+//add from https://github.com/ajorgense1-chwy/cs5610_spr23_mod3/blob/main/backend/server.js#L29-L35
+let frontend_dir = path.join(__dirname, '..', 'frontend', 'dist')
+
+app.use(express.static(frontend_dir));
+app.get('*', function (req, res) {
+    console.log("received request");
+    res.sendFile(path.join(frontend_dir, "index.html"));
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
