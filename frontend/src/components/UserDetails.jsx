@@ -16,7 +16,7 @@ function UserDetails() {
   useEffect(() => {
     const fetchDetailsAndStatuses = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/user/user/${username}`);
+        const response = await fetch('/api/user/user/${username}');
         if (response.ok) {
           const data = await response.json();
           setUserDetails(data.userDetails);
@@ -43,7 +43,7 @@ function UserDetails() {
 
   const handleDescriptionSave = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/user/updateDescription`, {
+      const response = await fetch('/api/user/updateDescription', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

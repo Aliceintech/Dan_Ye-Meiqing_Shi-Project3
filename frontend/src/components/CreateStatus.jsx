@@ -7,7 +7,7 @@ import { useStatus } from '../context/StatusContext';
 
 function CreateStatus() {
   const [content, setContent] = useState('');
-  const { currentUser } = useAuth(); // 使用 AuthContext 获取当前用户
+  const { currentUser } = useAuth(); 
   const { fetchStatuses } = useStatus();
 
   const handleSubmit = async (event) => {
@@ -24,13 +24,13 @@ function CreateStatus() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: currentUser.username, content }), // 包含用户名和内容
+        body: JSON.stringify({ username: currentUser.username, content }), 
       });
 
       if (response.ok) {
         console.log('Status posted successfully');
-        setContent(''); // 清空文本域
-        fetchStatuses(); // 调用 fetchStatuses 更新全局状态
+        setContent(''); 
+        fetchStatuses(); 
       } else {
         console.error('Failed to post status');
       }

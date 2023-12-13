@@ -11,7 +11,7 @@ function Navbar() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search?query=${searchQuery}`);
+    navigate('/search?query=${searchQuery}');
   };
 
   return (
@@ -34,7 +34,7 @@ function Navbar() {
       <div>
         {currentUser ? (
           <>
-            <Link to={`/user/${currentUser.username}`} style={{ marginRight: '20px' }}>
+            <Link to={'/user/${currentUser.username}'} style={{ marginRight: '20px' }}>
               {currentUser.username}
             </Link>
             <button onClick={logout}>Logout</button>

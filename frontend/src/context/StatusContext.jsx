@@ -14,7 +14,7 @@ export const StatusProvider = ({ children }) => {
 
   const fetchStatuses = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/status');
+      const response = await fetch('/api/status');
       if (response.ok) {
         const data = await response.json();
         setStatuses(data);
@@ -26,7 +26,7 @@ export const StatusProvider = ({ children }) => {
 
   const fetchUserStatuses = async (username) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/status/user/${username}`);
+      const response = await fetch('/api/status/user/${username}');
       if (response.ok) {
         return await response.json();
       } else {

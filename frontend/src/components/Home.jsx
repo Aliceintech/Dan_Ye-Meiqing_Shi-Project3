@@ -26,7 +26,7 @@ function Home() {
   const handleDelete = async (statusId) => {
     if (window.confirm("Are you sure you want to delete this status?")) {
       try {
-        const response = await fetch(`http://localhost:3000/api/status/${statusId}`, {
+        const response = await fetch('/api/status/${statusId}', {
           method: 'DELETE',
           headers: {
             // 如果您使用身份验证，请确保包含必要的认证信息
@@ -50,7 +50,7 @@ function Home() {
 
   const submitEdit = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/status/${editingStatus._id}`, {
+      const response = await fetch('/api/status/${editingStatus._id}', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

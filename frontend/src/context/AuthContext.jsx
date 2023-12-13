@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   const checkLoginStatus = async () => {
     console.log("start checking");
     try {
-      const response = await fetch('http://localhost:3000/api/user/checkLogin', {
+      const response = await fetch('/api/user/checkLogin', {
         credentials: 'include', // 确保 cookie 被发送
       });
       console.log("I am trying");
