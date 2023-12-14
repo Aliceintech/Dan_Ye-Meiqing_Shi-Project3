@@ -3,7 +3,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'; // 引入 useAuth 钩子
+import { useAuth } from '../context/AuthContext'; 
+import './UserDetails.css';
 
 function UserDetails() {
   const { username } = useParams();
@@ -63,40 +64,44 @@ function UserDetails() {
   };
   
   return (
-    <div>
+    <div className="user-details-container">
       {userDetails ? (
         <>
-          <h1 style={{ fontSize: '2em' }}>{userDetails.username}</h1>
-          <p>Joined: {new Date(userDetails.joinedDate).toLocaleString()}</p>
-          {isEditingDescription ? (
-            <>
-              <textarea value={newDescription} onChange={handleDescriptionChange} />
-              <button onClick={handleDescriptionSave}>Save Description</button>
-            </>
-          ) : (
-            <>
-              <p>{userDetails.description}</p>
-              {/* 只有当登录用户是当前查看的用户时才显示编辑按钮 */}
-              {currentUser && currentUser.username === userDetails.username && (
-                <button onClick={handleDescriptionEdit}>Edit Description</button>
-              )}
-            </>
-          )}
-        </>
-      ) : (
-        <p>Loading user details...</p>
-      )}
-      <h2>Status Updates</h2>
-      {userStatuses.length > 0 ? (
-        userStatuses.map(status => (
-          <div key={status._id}>
-            <p>{status.content}</p>
-            <small>Posted on: {new Date(status.timestamp).toLocaleString()}</small>
+          <div className="user-details-header">
+            <h1>{userDetails.username}</h1>
+            <p>Joined: {new Date(userDetails.joinedDate).toLocaleString()}</p>
           </div>
-        ))
-      ) : (
-        <p>No status updates to show.</p>
-      )}
+          <div className="user-details-info">
+            {isEditingDescription ? (
+              <>
+                <textarea value={newDescription} onChange={handleDescriptionChange} />
+                <button onClick={handleDescriptionSave}>Save Description</button>
+              </>
+            ) : (
+              <>
+                <p>{userDetails.description}</p>
+                {/* 只有当登录用户是当前查看的用户时才显示编辑按钮 */}
+                {currentUser && currentUser.username === userDetails.username && (
+                  <button onClick={handleDescriptionEdit}>Edit Description</button>
+                )}
+              </>
+            )}
+          </div>
+          </>
+        ) : (
+          <p>Loading user details...</p>
+        )}
+        <h2>Status Updates</h2>
+        {userStatuses.length > 0 ? (
+          userStatuses.map(status => (
+            <div className="user-status" key={status._id}>
+              <p>{status.content}</p>
+              <small>Posted on: {new Date(status.timestamp).toLocaleString()}</small>
+            </div>
+          ))
+        ) : (
+          <p>No status updates to show.</p>
+        )}
     </div>
   );
 }

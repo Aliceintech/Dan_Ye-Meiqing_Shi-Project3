@@ -5,23 +5,29 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the child elements */
   }
   
   .auth-container h2 {
     text-align: center;
     color: #333;
+    width: 100%; /* Ensures the heading aligns with the form width */
   }
   
   .auth-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%; /* Sets the width of the form */
   }
   
   .auth-form label {
     margin-bottom: 5px;
     font-weight: bold;
     color: #444;
+    text-align: left; /* Aligns the label text to the left */
   }
   
   .auth-form input[type="text"],
@@ -31,15 +37,8 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
-  }
-  
-  .auth-form input[type="text"]:focus,
-  .auth-form input[type="password"]:focus,
-  .auth-form textarea:focus {
-    outline: none;
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
+    width: 100%; /* Makes inputs full width */
+  }  
   
   .auth-form button[type="submit"] {
     padding: 10px 15px;
@@ -81,4 +80,3 @@
       font-size: 14px;
     }
   }
-  

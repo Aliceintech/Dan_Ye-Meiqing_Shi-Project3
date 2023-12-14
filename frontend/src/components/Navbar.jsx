@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import './Navbar.css';
 
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,11 +12,11 @@ function Navbar() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate('/search?query=${searchQuery}');
+    navigate(`/search?query=${searchQuery}`);
   };
 
   return (
-    <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <nav className="navbar">
       <div>
         <Link to="/">Home</Link>
       </div>
@@ -31,10 +32,10 @@ function Navbar() {
           <button className="button" type="submit">Search</button>
         </form>
       </div>
-      <div>
+      <div className="user-info">
         {currentUser ? (
           <>
-            <Link to={'/user/${currentUser.username}'} style={{ marginRight: '20px' }}>
+            <Link to={`/user/${currentUser.username}`} style={{ marginRight: '20px' }}>
               {currentUser.username}
             </Link>
             <button onClick={logout}>Logout</button>
