@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-height: calc(100vh);
+    min-height: calc(30vh);
     padding: 20px;
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(254, 208, 208, 0.1);

@@ -1,5 +1,5 @@
 /* Navbar.css */
-nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +8,7 @@ nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav a {
+.navbar a {
   margin-right: 15px;
   text-decoration: none;
   color: #032447;
@@ -43,7 +43,7 @@ nav a {
   padding: 10px;
   margin-right: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .button {
