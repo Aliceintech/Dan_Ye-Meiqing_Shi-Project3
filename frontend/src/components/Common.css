@@ -1,11 +1,9 @@
   .auth-container {
-    min-height: calc(50vh - 5px); 
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
     align-items: center;
     padding: 20px;
-    width: 400px;
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
