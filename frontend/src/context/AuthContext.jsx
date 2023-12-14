@@ -46,8 +46,22 @@ export const AuthProvider = ({ children }) => {
   };
 
   // 登出处理逻辑
-  const logout = () => {
-    setCurrentUser(null);
+  const logout = async () => {
+    try {
+      // Send a request to the server to end the session
+      const response = await fetch('/api/user/logout', {
+        method: 'POST',
+        credentials: 'include', // include cookies
+      });
+      if (response.ok) {
+        // If logout is successful, update the local state
+        setCurrentUser(null);
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   return (

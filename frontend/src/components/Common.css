@@ -1,5 +1,5 @@
 .auth-container {
-    max-width: 400px;
+    width: 100%;
     margin: 20px auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: flex-start; /* Align items from the top */
     padding: 20px;
-    min-height: 100vh;
   }
   
   .auth-container h2 {

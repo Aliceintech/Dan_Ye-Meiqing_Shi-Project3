@@ -60,7 +60,11 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+// Logout route
+router.post('/logout', async (req, res) => {
+  res.clearCookie('userId'); // Clear the 'userId' cookie
+  res.status(200).json({ message: 'Logout successful' });
+});
 
 // 检查登录状态的路由
 // router.get('/checkLogin', async (req, res) => {
