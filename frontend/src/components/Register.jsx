@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import './Common.css';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -56,10 +57,10 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleSubmit} className="auth-form">
         <div>
           <label>Username</label>
           <input 
