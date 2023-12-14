@@ -1,14 +1,12 @@
 /* Navbar.css */
 .navbar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  position: fixed;
   background-color: #032447;
   padding: 10px 20px;
   color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  min-width: 340px;
 }
 
 .navbar a {

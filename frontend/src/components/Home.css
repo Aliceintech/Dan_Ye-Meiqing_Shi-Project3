@@ -14,7 +14,6 @@ body {
   justify-content: flex-start; /* Align items from the top */
   padding: 20px;
   min-height: 100vh; /* Full viewport height */
-  width: 100%;
 }
 
 .header {
