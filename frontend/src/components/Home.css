@@ -11,9 +11,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align items from the top */
+  justify-content: flex-start;
   padding: 20px;
-  min-height: 100vh; /* Full viewport height */
+  width: 100%;
 }
 
 .header {
@@ -21,13 +21,11 @@ body {
   margin: 20px 0;
 }
 
-/* Responsive grid for posts or content */
 .content-grid {
   display: flex;
-  flex-direction: column; /* Column layout for top to bottom alignment */
-  align-items: center; /* Center items horizontally */
+  flex-wrap: wrap;
   gap: 20px;
-  width: 100%; /* Full width */
+  justify-content: center;
 }
 
 .card {
@@ -35,7 +33,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 100%; /* Full width on mobile */
+  width: 100%;
 }
 
 /* Button styling */

@@ -14,13 +14,14 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f8fa;
-  color: #14171a;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+  background-color: #f4f4f4;
+  color: rgb(20, 153, 197);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
@@ -32,13 +33,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 340px;
-  min-height: 100vh;
-}
 
 h1 {
   font-size: 3.2em;

@@ -1,19 +1,17 @@
 /* Navbar.css */
-.navbar {
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #032447;
-  padding: 10px 20px;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar a {
-  color: white;
+nav a {
+  margin-right: 15px;
   text-decoration: none;
-  margin: 0 10px;
-  font-weight: bold;
+  color: #032447;
 }
 
 .navbar a:hover {
