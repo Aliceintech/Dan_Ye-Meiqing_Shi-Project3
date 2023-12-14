@@ -33,11 +33,8 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  place-items: center;
   min-width: 400px;
   min-height: 100vh;
 }
