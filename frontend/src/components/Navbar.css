@@ -8,7 +8,7 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #032447;
   padding: 10px 20px;
