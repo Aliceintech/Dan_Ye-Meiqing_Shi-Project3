@@ -1,5 +1,5 @@
   .auth-container {
-    min-height: calc(100vh - 35vh);
+    min-height: calc(100vh - 15vh);
     display: flex;
     flex-direction: column;
     justify-content: center; /* This will center the content vertically */
