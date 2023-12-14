@@ -6,13 +6,12 @@
   width: 100%;
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #007bff;
+  color: rgba(15, 23, 168, 0.693);
 }
 
 .navbar a {
   margin-right: 15px;
   text-decoration: none;
-  color: #032447;
 }
 
 .navbar a:hover {
