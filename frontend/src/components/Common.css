@@ -12,7 +12,8 @@ body {
     align-items: center;/* Aligns items from the top */
     padding: 20px;
     width: 100%;
-    margin: 20px auto;
+    margin-top: 0;
+    margin-bottom: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     background-color: #fff;
