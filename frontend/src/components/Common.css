@@ -2,10 +2,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
   .auth-container {
-    min-height: calc(100vh - 15vh);
     display: flex;
     flex-direction: column;
     justify-content: center; /* This will center the content vertically */
