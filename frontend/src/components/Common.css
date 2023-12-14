@@ -7,7 +7,10 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the child elements */
+    align-items: center;
+    justify-content: flex-start; /* Align items from the top */
+    padding: 20px;
+    min-height: 100vh;
   }
   
   .auth-container h2 {

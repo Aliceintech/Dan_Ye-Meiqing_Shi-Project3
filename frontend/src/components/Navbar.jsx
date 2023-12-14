@@ -35,7 +35,7 @@ function Navbar() {
       <div className="user-info">
         {currentUser ? (
           <>
-            <Link to={`/user/${currentUser.username}`} style={{ marginRight: '20px' }}>
+            <Link to={'/user/${currentUser.username}'} style={{ marginRight: '20px' }}>
               {currentUser.username}
             </Link>
             <button onClick={logout}>Logout</button>
