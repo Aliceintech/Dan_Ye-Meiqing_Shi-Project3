@@ -59,11 +59,6 @@ body {
 
 /* Media query for larger screens */
 @media (min-width: 768px) {
-  .content-grid {
-    flex-direction: row; /* Row layout for side-by-side alignment */
-    flex-wrap: wrap;
-    justify-content: center; /* Center items horizontally */
-  }
 
   .card {
     width: calc(50% - 20px); /* Adjust width for 2 columns */

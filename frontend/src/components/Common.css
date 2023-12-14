@@ -1,9 +1,8 @@
   .auth-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    min-height: calc(30vh);
     padding: 20px;
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(254, 208, 208, 0.1);
