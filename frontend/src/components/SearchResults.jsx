@@ -12,7 +12,7 @@ function SearchResults() {
       console.log('Sending request with query:', query); // 打印发送的请求
 
       try {
-        const response = await fetch('/api/user/search-users?query=${query}');
+        const response = await fetch(`/api/user/search-users?query=${query}`);
         console.log('Received response:', response); // 打印接收到的响应
 
         if (response.ok) {

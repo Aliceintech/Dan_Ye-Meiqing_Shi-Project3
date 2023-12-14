@@ -26,7 +26,7 @@ export const StatusProvider = ({ children }) => {
 
   const fetchUserStatuses = async (username) => {
     try {
-      const response = await fetch('/api/status/user/${username}');
+      const response = await fetch(`/api/status/user/${username}`);
       if (response.ok) {
         return await response.json();
       } else {
