@@ -6,12 +6,16 @@
     justify-content: flex-start; /* Align items from the top */
     padding: 20px;
     width: 100%;
-  }
-  
-  .user-details-header {
+}
+
+.user-details-header {
     text-align: center;
     margin-bottom: 20px;
-  }
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    background-color: white; /* Set background color to maintain readability */
+    z-index: 1000; /* Ensure it stays above other content */
+}
   
   .user-details-header h1 {
     font-size: 2em;
