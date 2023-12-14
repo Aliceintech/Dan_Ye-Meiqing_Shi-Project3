@@ -53,10 +53,9 @@
   }
   
   button {
-    background-color: #032447;
     border: none;
     padding: 10px 15px;
-    color: darkblue;
+    color: white;
     border-radius: 4px;
     cursor: pointer;
   }
