@@ -1,5 +1,7 @@
 /* Navbar.css */
 .navbar {
+  margin: 0;
+  top: 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -8,7 +10,7 @@
   padding: 10px 20px;
   color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: auto;
+  min-width: 340px;
 }
 
 .navbar a {
