@@ -2,18 +2,16 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 
   .auth-container {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* This will center the content vertically */
-    align-items: center;/* Aligns items from the top */
+    justify-content: flex-start; 
+    align-items: center;
     padding: 20px;
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 20px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     background-color: #fff;
