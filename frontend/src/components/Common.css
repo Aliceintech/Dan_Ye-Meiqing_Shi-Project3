@@ -1,5 +1,5 @@
-body {
-  height: 100%;
+body.auth-pages {
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
 }

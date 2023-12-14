@@ -7,13 +7,13 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #032447;
   padding: 10px 20px;
   color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  top:0;
+  top:0%;
 }
 
 .navbar a {
